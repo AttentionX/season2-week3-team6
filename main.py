@@ -24,9 +24,9 @@ question = "Which of these is not edible?"
  
 curation_prompt = "Please describe this picture to me."
 img2text = Image2Text()
-curation1 = img2text.blip2(imgUrl="../questions/Q3/Q3/answer1.png", prompt=curation_prompt)
-curation2 = img2text.blip2(imgUrl="../questions/Q3/Q3/answer2.JPG", prompt=curation_prompt)
-curation3 = img2text.blip2(imgUrl="../questions/Q3/Q3/answer3.jpg", prompt=curation_prompt)
+curation1 = img2text.blip2(imgUrl="assets/Q3/answer1.png", prompt=curation_prompt)
+curation2 = img2text.blip2(imgUrl="assets/Q3/answer2.JPG", prompt=curation_prompt)
+curation3 = img2text.blip2(imgUrl="assets/Q3/answer3.jpg", prompt=curation_prompt)
 
 prompt_with_curation = f"""
     Choose the most appropriate choice as the correct answer to the question from among the three choices.
