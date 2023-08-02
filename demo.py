@@ -19,15 +19,16 @@ quiz_num = st.slider('문제를 선택해주세요!', 1, 10)
 
 if quiz_num:
     st.session_state['isCorrect'] = 'none'
+    f = open(f"assets/{quiz_num}/q.txt", "r")
+    lines = f.readlines()
+    quiz_text = lines[0]
+    answer = 1 #int(lines[1])
+    
+    st.subheader(f"Q: {quiz_text}")
+    st.session_state['answer'] = answer 
 
 #####################quiz display
 
-f = open(f"assets/{quiz_num}/q.txt", "r")
-quiz_text = f.read()
-st.subheader(f"Q: {quiz_text}")
-
-# code here
-st.session_state['answer'] = 1
 
 col1, col2, col3 = st.columns(3)
 
