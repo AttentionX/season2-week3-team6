@@ -7,8 +7,10 @@ import openai
 
 from dotenv import load_dotenv 
 load_dotenv()
-openai.api_key = os.environ['OPENAI_API_KEY']
 
+from img2text import Image2Text
+
+openai.api_key = os.environ['OPENAI_API_KEY']
 
 def get_gpt_response(prompt):
     chat_completion = openai.ChatCompletion.create(model="gpt-3.5-turbo",
@@ -18,9 +20,11 @@ def get_gpt_response(prompt):
     return response 
 
 
-question = "Which of these is youngest animal?"
+question = "Which of these is the youngest animal?"
+curation_prompt = "Please describe this picture to me."
 
-curation1 = "A cat is here"
+img2text = Image2Text()
+curation1 = img2text.blip2(imgUrl="assets/cat.jpg", prompt=curation_prompt)
 curation2 = "A chick is here"
 curation3 = "A dinosaur is here" 
 
@@ -32,6 +36,8 @@ prompt_with_curation = f"""
 What is the answer? Please respond with a single number.  
 """
 
+print("final prompt")
+print(prompt_with_curation)
 
 response = get_gpt_response(prompt_with_curation)
 print("agent's response") 
