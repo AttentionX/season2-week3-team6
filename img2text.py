@@ -1,25 +1,9 @@
 import os
-import openai
 from dotenv import load_dotenv
 import requests
-import uuid
-import time
-import json
-from PIL import Image
-from io import BytesIO
-import base64
-import math
-import io
-import time
-import asyncio
-import aiohttp
-import math
 import replicate
 
 load_dotenv()
-
-# Openai set
-openai.api_key = os.getenv('OPENAI_API_KEY')  
 
 # Replicate set
 replicate_api_key = os.getenv('REPLICATE_API_KEY')
