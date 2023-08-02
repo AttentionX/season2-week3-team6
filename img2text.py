@@ -2,6 +2,10 @@ import os
 from dotenv import load_dotenv
 import requests
 import replicate
+import easyocr
+import ssl
+
+ssl._create_default_https_context = ssl._create_unverified_context
 
 load_dotenv()
 
@@ -37,5 +41,11 @@ class Image2Text:
                     input={"image": open(imgUrl, "rb")}
                 )
                 return output
+            
+    def ocr(self, imgUrl):
+        reader = easyocr.Reader(['ko', 'en'], gpu=False)
+        result = reader.readtext(imgUrl)
+        text = " ".join([box[1] for box in result])
+        return text.strip()
     
     
